@@ -1,0 +1,35 @@
+{nocache}
+<div class="header">
+    <div class="top-bar">
+        <div class="header-nav">
+            <ul>
+                <li class="tab {if $mod eq 'backstagesIndex'}selected{/if}">
+                    <a href="../index.php?mod=backstagesIndex&act=index">首页</a>
+                </li>
+                <li class="tab">
+                    <a href="#">开发文档</a>
+                </li>
+                <li class="tab">
+                    <a href="#">官方论坛</a>
+                </li>
+                {if $loginStatus eq 'in' }
+                <li class="tab {if $mod != 'backstagesIndex' && $mod != 'backstagesLogin'}selected{/if}">
+                    <a href="../index.php?mod=developerInformationList&act=index">{$loginName}</a>
+                </li>
+                <li class="tab">
+                    <a href="../index.php?mod=backstagesLogin&act=logout">退出</a>
+                </li>
+                {else}
+                <li class="tab {if  $mod eq 'backstagesLogin'}selected{/if}">
+                    <a href="../index.php?mod=backstagesLogin&act=index">登录</a>
+                </li>
+                {/if}
+            </ul>
+            <div class="barTop"></div>
+        </div>
+        <div class="logo">
+            <img src="../images/logo.gif" />
+        </div>
+    </div>
+</div>
+{/nocache}

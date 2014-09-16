@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的授权</title>
+<link href="../../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/jquery-migrate-1.1.1.js"></script>
+<link rel="stylesheet" href="../../js/superbox/jquery.superbox.css" type="text/css" media="all" />
+<script type="text/javascript" src="../../js/superbox/jquery.superbox-min.js"></script>
+<script type="text/javascript" src="../../js/superbox/jquery.superbox.js"></script>
+<script src="../../js/base.js"></script>
+<script src="../../js/form/Validform_v1.0.js"></script>
+<script src="../../js/myEmpower.js"></script>
+</head>
+<body class="home-body-color Arial-font">
+	<div class="container">
+    	<div class="content">
+        	{include file='header.html'}
+            <div class="content-main">
+                {include file='distributionSecondHeader.html'}
+                <div class="content-mid">
+                    {include file='leftNavigate.html'}
+                    <div class="content-mid-right content-mid-unhover">
+                        <div class="content-mid-title">
+                            	我的授权
+                        </div>
+                        <div>
+                            <div>
+                                <img class="interface" src="../images/interface.gif" />
+                                <div class="content-mid-describe">
+                                    <p class="describe-title">API接口开放</p>
+                                    <p class="describe-main">订单、仓储、物流开放接口接入，全程代发货</p>
+                                    <p class="describe-main">申请条件：1.已认证分销商</p>
+                                </div>
+                                <div class="describe-bt">
+                                    <p>{$authorizationStatus[$api_open]}</p>
+                                    <a class="a-color" href="#" name="apiShowDialog">{$authorizationAct[$api_open]}</a>
+                                </div>
+                                <div style="clear:both;">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <img class="interface" src="../images/server.gif" />
+                                <div class="content-mid-describe">
+                                    <p class="describe-title">产品数据包开放服务</p>
+                                    <p class="describe-main">专业产品培训资料，类目，SKU信息数据包</p>
+                                    <p class="describe-main">申请条件：1.已认证分销商</p>
+                                </div>
+                                <div class="describe-bt">
+                                    <p>{$authorizationStatus[$pc_data_open]}</p>
+                                    <a class="a-color" href="#" name="pcDataShowDialog">{$authorizationAct[$pc_data_open]}</a>
+                                </div>
+                                <div style="clear:both;">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <img class="interface" src="../images/picture.gif" />
+                                <div class="content-mid-describe">
+                                    <p class="describe-title">图片系统开放</p>
+                                    <p class="describe-main">赛维图片系统批量下载，支持自动打水印，专业拍摄</p>
+                                    <p class="describe-main">申请条件：1.已认证分销商</p>
+                                </div>
+                                <div class="describe-bt">
+                                    <p>{$authorizationStatus[$pic_sys_open]}</p>
+                                    <a class="a-color" href="#" name="picSysShowDialog">{$authorizationAct[$pic_sys_open]}</a>
+                                </div>
+                                <div style="clear:both;">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <img class="interface" src="../images/paopen.gif" />
+                                <div class="content-mid-describe">
+                                    <p class="describe-title">ebay刊登系统开发</p>
+                                    <p class="describe-main">免范本制作，一键上传，批量发布商品到ebay</p>
+                                    <p class="describe-main">申请条件：1.已认证分销商</p>
+                                    <p class="describe-main-secon">2.至少已添加一个所有信息完整的ebay店铺</p>
+                                </div>
+                                <div class="describe-bt">
+                                    <p>{$authorizationStatus[$ebay_sys_open]}</p>
+                                    <a class="a-color" href="#" name="ebaySysShowDialog">{$authorizationAct[$ebay_sys_open]}</a>
+                                </div>
+                                <div style="clear:both;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            {include file='footer.html'}
+            {include file='myEmpowerBox.html'}
+            {include file='myEmpowerBox1.html'}
+            {include file='myEmpowerBox2.html'}
+            {include file='myEmpowerBox3.html'}
+        </div>
+    </div>
+</body>
+</html>

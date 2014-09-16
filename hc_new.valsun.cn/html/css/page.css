@@ -1,0 +1,63 @@
+.page a
+{
+	padding:5px 10px;
+	margin-right:7px;
+	background-color: #02b4fe;
+	color: #fff;
+
+}
+.page a:link,.page a:visited
+{
+	 color:#fff; 
+	 text-decoration:none;
+}
+
+.page a:hover
+{
+	 color:#fff; 
+	 text-decoration:none;
+}
+
+.goPage>input
+{
+	width:50px;
+	text-align:center;
+	margin-right:5px;
+}
+.page .thispage
+{
+	padding:5px 10px;
+	margin:0 7px 0 0;
+	background-color: #ff9e01;
+	color: #fff;
+}
+.fancybox-custom .fancybox-skin {
+	box-shadow: 0 0 50px #222;
+}
+.page .radius
+{
+	border-radius: 3px;
+}
+.page .firstpage
+{
+	border-bottom-left-radius:3px;
+	border-top-left-radius:3px;
+}
+.page .lastpage
+{
+	border-bottom-right-radius:3px;
+	border-top-right-radius:3px;
+}
+.page .jumpbt
+{
+	border-radius: 3px;
+	border: none;
+	background-color: #02b4fe;
+	padding:5px 10px;
+	color: #fff;
+	cursor: pointer;
+}
+.pagination .page .goPage-text
+{
+	padding: 4px;
+}

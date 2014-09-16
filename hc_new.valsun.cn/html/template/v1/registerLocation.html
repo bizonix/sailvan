@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册成功</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+</head>
+
+<body class="home-body-color">
+	<div class="container">
+    	<div class="content">
+        	{include file='header.html'}
+            <div class="forgot">
+                <div class="forgot-main">
+                    <div class="secstp">
+                        <div style="color:#03b3fc; font-size:21px; margin:0 auto;" class="secstp-msg">
+                            	{if $flag eq 'resendOk'}邮件已重发{elseif $flag eq 'resendError'}重发失败，请检查邮箱是否有效{else}恭喜您，注册成功！{/if}
+                        </div>
+                        <div style="width:389px; margin:0 auto; padding-left:170px;font-size:15px; line-height:20px; color:#747474;">
+                            <p>我们发送一封验证邮箱到{$email}</p>
+                            <p>验证并激活邮箱可以帮助您快速找回密码</p>
+                            <p>并第一时间通知您最新服务信息</p>
+                        </div>
+                        <div style="margin-top:30px;" class="secstp-bt-main">
+                            <input class="login-bt-save secstp-bt" onclick="window.open('{$emailAddress}');" type="submit" value="去登录邮箱">
+                        </div>
+                        <div class="forgotpassword-msg">
+                            <img class="msg-img" src="/images/forgotPasswordIcon.gif" />
+                            <div class="msg-text">
+                                <p>1.收不到邮件？<br />有可能被误判为垃圾邮件了，请到垃圾邮件文件夹找找</p>
+                                <p>2.邮箱不对？<a class="a-color" href="/index.php?mod=register&act=register">换个邮箱试试</a></p>
+                                <p>3.邮箱真的没问题？<a class="a-color" href="/index.php?mod=register&act=registerLocation&email={$email}&flag=resend">重发一封邮件</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {include file='footer.html'}
+        </div>
+    </div>
+</body>
+</html>

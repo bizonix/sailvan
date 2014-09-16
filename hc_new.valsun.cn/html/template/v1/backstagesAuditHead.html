@@ -1,0 +1,17 @@
+{include file='backstagesMenu.html'}
+<div class="content-mid-tab">
+    <ul>
+        <li>
+            <a {if $act=='backstageBase'}class="tab-select"{/if} href="index.php?mod=develop&act=backstageBase&dpId={$g_dpId}">基本信息</a>
+        </li>
+        <li>
+            <a {if $act=='backstageSenior'}class="tab-select"{/if} href="index.php?mod=develop&act=backstageSenior&dpId={$g_dpId}">高级信息</a>
+        </li>
+        <li>
+            <a {if $act=='shopList'}class="tab-select"{/if} href="index.php?mod=develop&act=shopList&dpId={$g_dpId}">店铺列表</a>
+        </li>
+        <li>
+            <a {if $act=='authList'}class="tab-select"{/if} href="index.php?mod=develop&act=authList&dpId={$g_dpId}">授权列表</a>
+        </li>
+    </ul>
+</div>

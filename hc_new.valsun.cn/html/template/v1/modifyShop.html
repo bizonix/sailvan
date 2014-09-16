@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>modifyShop</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+</head>
+
+<body class="home-body-color Arial-font">
+	<div class="container">
+    	<div class="content">
+        	<div class="header">
+                <div class="top-bar">
+                    <div class="header-nav">
+                        <ul>
+                            <li class="tab">
+                                <a href="homePage.html">首页</a>
+                            </li>
+                            <li class="tab">
+                                <a href="#">开发文档</a>
+                            </li>
+                            <li class="tab">
+                                <a href="#">官方论坛</a>
+                            </li>
+                            <li class="tab selected">
+                                <a href="login.html">登录</a>
+                            </li>
+                            <li class="tab">
+                                <a href="registered.html">注册</a>
+                            </li>
+                        </ul>
+                        <div class="barTop"></div>
+                    </div>
+                    <div class="logo">
+                        <img src="../images/logo.gif" />
+                    </div>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-top">
+                    <div class="content-top-padding">
+                        <div class="content-top-offwidth">
+                            <div class="content-top-banner">
+                                100%
+                            </div>
+                            <div class="content-top-msg">
+                                <p>注册分销商，即可免费申请授权</p>
+                                <a href="#">待完善：基本信息</a>
+                                <a href="#">店铺资料</a>
+                            </div>
+                            <div class="content-top-bt">
+                                <a href="#">申请认证分销商</a>
+                            </div>
+                            <div style="clear:both;">
+                            </div>
+                        </div>
+                        <div class="content-top-ser">
+                            <p>我的服务：</p>
+                            <div class="content-top-icon">
+                                <a class="product-icon" href="#">产品数据包</a>
+                                <a class="picture-icon" href="#">图片系统</a>
+                                <a class="pa-icon" href="#">ebay刊登系统</a>
+                                <a class="api-icon" href="#">API</a>
+                            </div>
+                        </div>
+                        <div style="clear:both;">
+                        </div>
+                    </div>
+                </div>
+                <div class="content-mid">
+                    <div class="content-mid-left">
+                        <div class="sidebar">
+                            <ul>
+                                <li class="sidebar-first sidebar-first-select">
+                                    <a class="auth" href="#">认证分销商</a>
+                                </li>
+                                <li class="sidebar-second">
+                                    <a class="sidebar-second-select" href="#">基本信息</a><br />
+                                    <a href="#">店铺资料</a>
+                                </li>
+                                <li class="sidebar-first">
+                                    <a class="accr" href="#">我的授权</a>
+                                </li>
+                                <li class="sidebar-second">
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a>
+                                </li>
+                                <li class="sidebar-first">
+                                    <a class="myapi" href="#">我的API</a>
+                                </li>
+                                <li class="sidebar-second">
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a>
+                                </li>
+                                <li class="sidebar-first">
+                                    <a class="apply" href="#">申请API</a>
+                                </li>
+                                <li class="sidebar-second">
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a>
+                                </li>
+                                <li class="sidebar-first">
+                                    <a class="password" href="#">修改密码</a>
+                                </li>
+                                <li class="sidebar-second">
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a><br />
+                                    <a href="#">二级导航</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-mid-right">
+                        <div class="content-mid-title">
+                            店铺资料
+                        </div>
+                        <div>
+                            <span class="content-mid-name">店铺账号：</span>
+                            <select class="select-width">
+                                <option>ebay美国</option>
+                            </select>
+                            <input placeholder="店铺账号（memberid），即店铺英文名字，非登录邮箱" class="text-width-mid" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name">店铺listing：</span>
+                            <input placeholder="该店铺任一在线产品的链接，如www.ebay.com/itm/*****" class="text-width-long" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name">paypal账号：</span>
+                            <input placeholder="paypal账号" class="text-width-long" type="text" />
+                        </div>
+                        <div class="content-mid-title">
+                            授权信息（申请ebay刊登必填）
+                        </div>
+                        <div>
+                            <span class="content-mid-name">店铺水印：</span>
+                            <input type="file" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name content-mid-left">运送国家：</span>
+                            <span class="content-mid-rightpos content-mid-rightcont">
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                                <label><input type="checkbox" />N and S.America</label>
+                            </span>
+                            <div style="clear:both;">
+                            </div>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">不运送国家：</span>
+                            <select class="select-width">
+                                <option>广东省</option>
+                            </select>
+                            <a href="#">设置区域及国家</a>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">userToken：</span>
+                            <input placeholder="userToken" class="text-width-long" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name">siteID：</span>
+                            <input placeholder="siteID" class="text-width-long" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name">devID：</span>
+                            <input placeholder="devID" class="text-width-long" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name">appID：</span>
+                            <input placeholder="appID" class="text-width-long" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name">certID：</span>
+                            <input placeholder="certID" class="text-width-long" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name">server Url：</span>
+                            <input placeholder="server Url" class="text-width-long" type="text" />
+                        </div>
+                        <div>
+                            <span class="content-mid-name"></span>
+                            <input type="button" value="保存">
+                            <input type="button" value="申请刊登授权">
+                        </div>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            <div class="home-main">
+            </div>
+            <div class="login-bt">
+                <div class="login-bt-main">
+                    <div>
+                        <a href="#">关于我们</a><span> | </span>
+                        <a href="#">联系我们</a><span> | </span>
+                        <a href="#">人才招聘</a><span> | </span>
+                        <a href="#">商家入驻</a><span> | </span>
+                        <a href="#">广告服务</a><span> | </span>
+                        <a href="#">友情链接</a><span> | </span>
+                        <a href="#">销售联盟</a><span> | </span>
+                        <a href="#">华成社区</a>
+                    </div>
+                    <p>
+                        Copyright©2014 华城云商 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

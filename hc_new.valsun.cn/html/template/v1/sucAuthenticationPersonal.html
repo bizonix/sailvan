@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>基本信息</title>
+<link href="../../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/jquery-migrate-1.1.1.js"></script>
+<link rel="stylesheet" href="../../js/superbox/jquery.superbox.css" type="text/css" media="all" />
+<script type="text/javascript" src="../../js/superbox/jquery.superbox-min.js"></script>
+<script type="text/javascript" src="../../js/superbox/jquery.superbox.js"></script>
+<script src="../../js/form/Validform_v1.0.js"></script>
+
+</head>
+
+<body class="home-body-color Arial-font">
+	<div class="container">
+    	<div class="content">
+        	{include file='header.html'}
+            <div class="content-main">
+                {include file='distributionSecondHeader.html'}
+                <div class="content-mid">
+                    {include file='leftNavigate.html'}
+                    <div class="content-mid-right">
+                        <div class="content-mid-title">
+                            	基本信息
+                        </div>
+                        <div>
+                            <span class="content-mid-name">分销商类型：</span>
+                            <span class="content-mid-rightpos">个人</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">姓名：</span>
+                            <span class="content-mid-rightpos">{$company|htmlspecialchars}</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">英文名称：</span>
+                            <span class="content-mid-rightpos">{$companyShortName|htmlspecialchars}</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">联系地址：</span>
+                            <span class="content-mid-rightpos">{$address2|htmlspecialchars}({$address|htmlspecialchars})</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">联系人与手机：</span>
+                            <span class="content-mid-rightpos">{$contactPerson|htmlspecialchars}{$contactPersonPhone|htmlspecialchars}</span>
+                            <div class="clear"></div>
+                        </div>
+						<div  id="PersnPhoneExt">
+							{foreach from=$contactPersonExt key=k item=v}
+								<span {if ($v=='')&&($contactPersonPhoneExt[$k]=='')} style="display:none;"{/if}>
+									<span class="content-mid-name"></span>
+									<span class="content-mid-rightpos">{$v|htmlspecialchars}  {$contactPersonPhoneExt[$k]|htmlspecialchars}</span><br>
+								</span>
+							{/foreach}
+						</div>
+                        <div>
+                            <span class="content-mid-name">主营产品：</span>
+                            <span class="content-mid-rightpos">{$mainProducts}</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">主销国家：</span>
+                            <span class="content-mid-rightpos">{$soldToCountries|htmlspecialchars}</span>
+                            <div class="clear"></div>
+                        </div>
+                        
+                        <div>
+                            <span class="content-mid-name">身份证-双面：</span>
+                            <a href="{$idCardUrl}" rel="superbox[image]" class="check-pic content-mid-rightpos a-color">查看</a>
+                        </div>
+                        <div class="content-mid-tmsg">
+                            <span>高级信息（可填）：填写后能优先审核，有机会获得更高权限</span>
+                            <a class="slide-bt" href="javascript:void(0);">+展开</a>
+                        </div>
+                        <div class="slide">
+                            <span class="content-mid-name">开户银行：</span>
+                            <span>{$bank|htmlspecialchars}</span>
+                            <span>{$bankName|htmlspecialchars}</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="slide">
+                            <span class="content-mid-name">开户人：</span>
+                            <span>{$bankUser|htmlspecialchars}</span>
+                            <span>{$bankCardNo|htmlspecialchars}</span>
+                            <div class="clear"></div>
+                        </div>
+                        
+                        <div class="slide">
+                            <span class="content-mid-name">营业额：</span>
+                            <span class="content-mid-rightpos">
+                                {if $lastYearSales != ''}
+                                <span class="text-width-four">上年销售额:{$lastYearSale|htmlspecialchars}</span>
+                                {/if}
+                                {if $predictSalesByYear != ''}
+                                <span class="text-width-four">预计今年销售额:{$predictSalesByYear|htmlspecialchars}</span>
+                                {/if}
+                                {if $retail != ''}
+                                <span class="text-width-four">零售:{$retail|htmlspecialchars}</span>
+                                {/if}
+                                {if $wholesale != ''}
+                                <span class="text-width-four">批发:{$wholesale|htmlspecialchars}</span>
+                                {/if}
+                            </span>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="slide">
+                            <span class="content-mid-name">分销额：</span>
+                            <span class="content-mid-rightpos">
+                                {$predictSalesByEveryMonth|htmlspecialchars}
+                            </span>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="slide">
+                            <span class="content-mid-name">从业情况：</span>
+                            <span class="content-mid-rightpos">
+                                {if $startElectricBusinessTime != ''}
+                                <span class="text-width-short">开始电商时间:{$startElectricBusinessTime|htmlspecialchars}</span>
+                                {/if}
+                                {if $electricBusinessPlatform != ''}
+                                <span class="text-width-short">主营电商平台:{$electricBusinessPlatform|htmlspecialchars}</span>
+                                {/if}
+                            </span>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="slide">
+                            <span class="content-mid-name">其他联系人：</span>
+                            <span class="content-mid-rightpos">
+                                <span class="text-width-short">{$otherContactPersonName|htmlspecialchars}</span>
+                                <span class="text-width-short"> {$otherContactPhone|htmlspecialchars}</span>
+                            </span>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            {include file="footer.html"}
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="../../js/base.js"></script>

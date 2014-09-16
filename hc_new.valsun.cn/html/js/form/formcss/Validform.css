@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+.Validform_checktip{
+	margin-left:8px;
+	line-height:20px;
+	height:20px;
+	overflow:hidden;
+	color:#999;
+	font-size:13px;
+}
+.Validform_right{
+	color:#71b83d;
+	padding-left:20px;
+	background:url(../img/right1.png) no-repeat left center;
+}
+.Validform_wrong{
+	color:#ff7a4b;
+	padding-left:20px;
+	white-space:nowrap;
+	background:url(../img/error.png) no-repeat left center;
+}
+.Validform_loading{
+	padding-left:20px;
+	background:url(../img/onLoad.gif) no-repeat left center;
+}
+.Validform_error{
+	background-color:#ffe7e7;
+}
+.registerform .label{
+	display:inline-block;
+	width:80px;
+}
+#Validform_msg{display:none;color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:380px; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{display:none;border-top-left-radius:7px;border-top-right-radius:7px;font-size:14px;line-height:30px; height:30px; text-align:left; font-weight:bold; padding:0 12px; color:#fff; position:relative; background-color:#02b4fe;}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#ccc;}
+#Validform_msg .Validform_info{ display:none;background:#fff;border-bottom-left-radius:7px;border-bottom-right-radius:7px;font-size:14px;padding:12px;border:1px solid #bbb; border-top:none; text-align:left;}

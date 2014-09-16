@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>基本信息-公司</title>
+<link href="../../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/jquery-migrate-1.1.1.js"></script>
+<link rel="stylesheet" href="../../js/superbox/jquery.superbox.css" type="text/css" media="all" />
+<script type="text/javascript" src="../../js/superbox/jquery.superbox-min.js"></script>
+<script type="text/javascript" src="../../js/superbox/jquery.superbox.js"></script>
+<script src="../../js/form/Validform_v1.0.js"></script>
+<script src="../../js/PCASClass.js"></script>
+<script src="../../js/swfupload/swfupload/swfupload.js"></script>
+<script src="../../js/swfupload/swfupload/swfupload.js"></script>
+<script src="../../js/swfupload/js/swfupload.queue.js"></script>
+<script src="../../js/swfupload/js/fileprogress.js"></script>
+<script src="../../js/swfupload/js/handlers.js"></script>
+<script src="../../js/distributorBasicInformation.js"></script>
+</head>
+<input type="hidden" value="{$PHPSESSID}" name="PHPSESSID" />
+<body class="home-body-color Arial-font">
+	<div class="container">
+    	<div class="content">
+        	{include file='backstagesHead.html'}
+            <div class="content-main">
+                <div class="content-top-appli">
+                    <img src="../images/appli_banner.gif">
+                </div>
+                <div class="content-mid">
+                <form id="contentForm">
+                    {include file='backstagesAuditHead.html'}
+                    <div class="content-mid-right content-mid-unhover content-mid-total">
+                        <div class="content-mid-title content-mid-totalbg">
+                            基本信息
+                        </div>
+                        
+                        <div>
+                            <span class="content-mid-name">分销商类型：</span>
+                            <label><input type="radio" name='type' value='2' checked />公司</label>
+                            <label><input type="radio" name='type' value='1' />个人</label>
+                            
+                        </div>
+                        <div>
+                            <span class="content-mid-name">公司全称：</span>
+                            <input placeholder="公司全称，与营业执照一致" class="text-width-long" type="text" name='company' value="{$company|htmlspecialchars}" maxlength='60'/>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">公司英文简称：</span>
+                            <input placeholder="公司英文名称简称" class="text-width-long" type="text" name='companyShortName' value="{$companyShortName|htmlspecialchars}" maxlength='30'/>
+                            
+                        </div>
+                        <div>
+                            <span class="content-mid-name">公司法人：</span>
+                            <input placeholder="公司法人，与营业执照一致" class="text-width-long" type="text" name='companyLegalPerson' value="{$companyLegalPerson|htmlspecialchars}" maxlength='25'/>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">公司地址：</span>
+                            <input type="hidden" name="address2" value="{$address2}" />
+                            <select name="companyAddressProvince"></select><select name="companyAddressCity" ></select><select name="companyAddressDistrict" ></select>
+                            
+                        </div>
+                        
+                        <div>
+                            <span class="content-mid-name"></span>
+                            <input placeholder="不需要重复填写市区" class="text-width-long" type="text" name='companyAddressExtend' value="{$companyAddressExtend|htmlspecialchars}" maxlength='120'/>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">联系人与手机：</span>
+                            <input placeholder="联系人姓名" class="text-width-short" type="text" name='contactPerson' value="{$contactPerson|htmlspecialchars}" maxlength='25'/>
+                            <input placeholder="联系人常用11位有效手机号码" class="text-width-mid" type="text" name='contactPersonPhone' value="{$contactPersonPhone|htmlspecialchars}" maxlength='20'/>
+                            <a class="content-mid-add" href="javascript:void(0)" id="addPersnPhone">+新增</a>
+                            <div  id="PersnPhoneExt">
+								{foreach from=$contactPersonExt key=k item=v}
+									<span {if ($v=='')&&($contactPersonPhoneExt[$k]=='')} style="display:none;"{/if}>
+										<span class="content-mid-name"></span>
+										<input placeholder="联系人姓名" class="text-width-short" type="text" name='contactPersonExt[]' value="{$v|htmlspecialchars}" maxlength='25'/>
+										<input placeholder="联系人常用11位有效手机号码" class="text-width-mid" type="text" name='contactPersonPhoneExt[]' value="{$contactPersonPhoneExt[$k]|htmlspecialchars}" maxlength='20'/>&nbsp;<a   class="content-mid-add" href="javascript:void(0)" name="delPersnPhoneExt">-删除</a><br>
+									</span>
+								{/foreach}
+                            </div>
+                        </div>
+                        <div>
+                            <span class="content-mid-name content-mid-left">主销产品：</span>
+                            <span class="content-mid-rightpos content-mid-righttab">
+                                {foreach from=$category key=k item=val}
+                                <label><input type="checkbox" value='{$k}' name="mainProducts[]"{if $mainProducts[$k] eq 1 }checked{/if} />{$val}</label>
+                                {/foreach}
+                            </span>
+                            <div style="clear:both;">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <span class="content-mid-name">主销国家：</span>
+                            <input placeholder="您主要销往的国家" class="text-width-long" type="text" name='soldToCountries' value="{$soldToCountries|htmlspecialchars}" maxlength='120'/>
+                        </div>
+                        <div>
+                            <span class="content-mid-name" >身份证-双面：</span>
+                            <span id="idCardSpanButtonPlaceHolder"></span>
+                            <input type="hidden" name="idCard" value="" />
+                            <input id="idCardBtnCancel" type="button" value="取消所有上传" onclick="swfu1.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px; display: none;"  />
+                            
+                            <a {if $idCardUrl == ""}style="display: none;"{/if} href="{$idCardUrl}" id="idCardUrl" rel="superbox[image]" class="check-pic">查看</a>
+                            
+                        </div>
+                        <div class="fieldset flash" id="idCardFsUploadProgress"></div>
+                        
+                        <div>
+                            <span class="content-mid-name" >营业执照：</span>
+                            <span id="businessLicenseSpanButtonPlaceHolder"></span>
+                            <input type="hidden" name="businessLicense" value="" />
+                            <input id="businessLicenseBtnCancel" type="button" value="取消所有上传" onclick="swfu2.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px; display: none;" />
+                            
+                            <a {if $businessLicenseUrl == ""}style="display: none;"{/if} href="{$businessLicenseUrl}" id="businessLicenseUrl" rel="superbox[image]" class="check-pic">查看</a>
+                            
+                        </div>
+                        <div class="fieldset flash" id="businessLicenseFsUploadProgress" ></div>
+                        
+                        <div>
+                            <span class="content-mid-name" >税务登记证：</span>
+                            <span id="taxRegistrationSpanButtonPlaceHolder"></span>
+                            <input type="hidden" name="taxRegistration" value="" />
+                            <input id="taxRegistrationBtnCancel" type="button" value="取消所有上传" onclick="swfu3.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px; display: none;" />
+                            <a  {if $taxRegistrationUrl == ""}style="display: none;"{/if} href="{$taxRegistrationUrl}" id="taxRegistrationUrl" rel="superbox[image]" class="check-pic">查看</a>
+                           
+                        </div>
+                        <div class="fieldset flash" id="taxRegistrationFsUploadProgress"></div>
+                        <div>
+                            <span class="content-mid-name">
+                                <input type="button" value="修改保存" id='backstagesSaveBase'>
+                            </span>
+                        </div>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="home-main">
+            </div>
+            <div class="login-bt">
+                <div class="login-bt-main">
+                    <div>
+                        <a href="#">关于我们</a><span> | </span>
+                        <a href="#">联系我们</a><span> | </span>
+                        <a href="#">人才招聘</a><span> | </span>
+                        <a href="#">商家入驻</a><span> | </span>
+                        <a href="#">广告服务</a><span> | </span>
+                        <a href="#">友情链接</a><span> | </span>
+                        <a href="#">销售联盟</a><span> | </span>
+                        <a href="#">华成社区</a>
+                    </div>
+                    <p>
+                        Copyright©2014 华城云商 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/base.js"></script>
+</html>

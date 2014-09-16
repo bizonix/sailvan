@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>店铺资料</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<link href="../css/page.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/storeDataList.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+</head>
+
+<body class="home-body-color Arial-font">
+    <div class="container">
+        <div class="content">
+            {include file='header.html'}
+            <div class="content-main">
+                {include file='distributionSecondHeader.html'}
+                <div class="content-mid">
+                    {include file='leftNavigate.html'}
+                    <div class="content-mid-right content-mid-table content-mid-unhover">
+                        <div class="content-mid-title">
+                           	 店铺资料
+                        </div>
+                        <div>
+	                        <form action="#" method="post">
+	                            <span>
+	                                <select class="disselect-base" name="platFormID">
+	                                	<option value="-">平台</option>
+		                                {foreach from='PLATFORMS'|C key=k item=val}
+		                                	<option value="{$k}" {if $p_platFormID|is_numeric and $p_platFormID eq $k}selected="selected"{/if}>{$val}</option>
+		                            	{/foreach}
+	                                </select>
+	                            </span>
+	                            <span>
+	                                <select class="disselect-base" name="status">
+	                                    <option value="-">ebay刊登状态</option>
+	                                    {foreach from='AUTHORIZATIONSTATUS'|C key=k item=val}
+		                                	<option value="{$k}" {if $p_status eq $k}selected="selected"{/if}>{$val}</option>
+		                            	{/foreach}
+	                                </select>
+	                            </span>
+	                            <span>
+	                                <input class="distext-base" type="text" placeholder="店铺账号" name="shopAccount" value="{$p_shopAccount}"/>
+	                                <input type="hidden" name="flag" value="searchShop"/>
+	                            </span>
+	                            <span>
+	                                <input class="disbutton-base" type="submit" value="查找">
+	                            </span>
+	                            <span>
+	                                <input class="disbutton-base" type="button" onclick="location.href='../index.php?mod=distributorBasicInformation&act=addShop';" value="添加店铺">
+	                            </span>
+	                        </form>
+                        </div>
+                        <table width="100%" cellpadding="0" cellspacing="0"  style="text-align: center;">
+                            <thead>
+                                <td width="10%">编号</td>
+                                <td width="15%" style="text-align: left;">站点</td>
+                                <td width="23%" style="text-align: left;"> 账号</td>
+                                <td width="17%">ebay刊登状态</td>
+                                <td width="25%">操作</td>
+                            </thead>
+                            <tbody>
+                            	{foreach from=$shops key=key item=shop}
+	                                <tr>
+	                                    <td>
+	                                    	{$key+1}
+	                                    </td>
+	                                    <td style="text-align: left;">
+	                                    	{if $shop.plat_form_id eq 1}
+			                                    {foreach from='PLATFORMS'|C key=k item=val}
+			                                    	{if $shop.plat_form_id eq $k}{$val}{/if}
+					                            {/foreach}
+	                                         	-
+	                                         	{foreach from='SITES'|C key=k item=val}
+			                                    	{if $shop.site_id eq $k}{$val}{/if}
+					                            {/foreach}
+	                                         {else}
+	                                         	{foreach from='PLATFORMS'|C key=k item=val}
+			                                    	{if $shop.plat_form_id eq $k}{$val}{/if}
+					                            {/foreach}
+	                                         {/if}
+	                                    </td>
+	                                    <td style="text-align: left;">
+	                                        {$shop.shop_account}
+	                                    </td>
+	                                    <td>
+	                                    	{if $shop.plat_form_id eq 1}
+			                                    {foreach from='AUTHORIZATIONSTATUS'|C key=k item=val}
+			                                    	{if $shop.status eq $k}<font color="lightcoral">{$val}</font>{/if}
+				                            	{/foreach}
+			                            	{else}
+			                            		<font color="lightcoral">-</font>
+			                            	{/if}
+	                                    </td>
+	                                    <td>
+	                                    	{if $shop.plat_form_id != '1'}
+	                                    		<a class="a-color" href="../index.php?mod=distributorBasicInformation&act=addShop&flag=updateShopInfo&shopId={$shop.id}">修改</a>
+	                                    		<a class="a-color" role-id="{$shop.id}" href="#" role-type="deleteShop">删除</a>
+	                                    	{elseif $shop.status eq '1'}
+	                                    		<a class="a-color" href="../index.php?mod=distributorBasicInformation&act=addShop&flag=updateShopInfo&shopId={$shop.id}">去申请</a>
+	                                    	{else}
+	                                        	<a class="a-color" href="../index.php?mod=distributorBasicInformation&act=showShopInfo&shopId={$shop.id}">查看</a>
+	                                        {/if}
+	                                    </td>
+	                                </tr>
+                                {/foreach}
+                                {if $shops|count eq 0}
+                                	<tr>
+	                                    <td class="content-myapi-tfoot" colspan="6" align="center">
+	                                        <p>还没有店铺</p>
+	                                        <a class="a-color" href="../index.php?mod=distributorBasicInformation&act=addShop">添加店铺</a>
+	                                    </td>
+                                	</tr>
+                                {/if}
+                            </tbody>
+                            {if $shops|count > 0}
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" align="center">
+                                        <div class="pagination">{$showPage}</div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            {/if}
+                        </table>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            {include file="footer.html"}
+        </div>
+    </div>
+</body>
+</html>

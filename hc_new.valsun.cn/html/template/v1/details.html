@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>店铺详情</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+</head>
+
+<body class="home-body-color Arial-font">
+	<div class="container">
+    	<div class="content">
+        	{include file='header.html'}
+            <div class="content-main">
+                {include file='distributionSecondHeader.html'}
+                <div class="content-mid">
+                    {include file='leftNavigate.html'}
+                    	<div class="content-mid-right content-mid-details content-mid-unhover content-mid-backcolor content-details-st">
+                    		{if $shop[0].status eq 3}
+		                        <span class="content-mid-detsuc">
+		                            <p>已获得授权</p>
+		                            <p>可分销类目：服饰与配饰 鞋子及箱包（适用所有授权）</p>
+		                             <a class="a-color" target="_blank" href="http://pa.valsun.cn">去登录</a>
+		                            <!-- <a class="a-color" href="../index.php?mod=distributorBasicInformation&act=addShop&flag=updateShopInfo&shopId={$shop[0].id}">申请调整</a> -->
+		                        </span>
+	                        {elseif $shop[0].status eq 4}
+		                        <span class="content-mid-deterr">
+			                        <p class="deterr-fontsize">审核不通过</p>
+		                            <p>未通过原因：{$shop[0].not_pass_reason}</p>
+									<p>添加您的更多店铺信息，可重新申请</p>
+		                            <!-- <a class="a-color" href="../index.php?mod=distributorBasicInformation&act=addShop&flag=updateShopInfo&shopId={$shop[0].id}">申请调整</a> -->
+			                    </span>
+			                {else}
+			                	<span class="content-mid-deterr">
+			                        <p class="deterr-fontsize">等待审核</p>
+		                            <p>我们将在2-3个工作日内完成审核，结果会通知您，请注意查看！如通过，将获得授权凭证，即可快速铺货~</p>
+		                            <!-- <a class="a-color" href="../index.php?mod=distributorBasicInformation&act=addShop&flag=updateShopInfo&shopId={$shop[0].id}">申请调整</a> -->
+			                    </span>
+		                    {/if}
+	                        <div class="content-mid-title content-backcolor">
+	                           	 店铺详情
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name content-details-name">店铺账号：</span>
+	                            <span class="content-mid-later content-details-later">{foreach from='PLATFORMS'|C key=k item=val}
+			                                    	{if $shop[0].plat_form_id eq $k}{$val}{/if}
+					                            {/foreach}-{$shop[0].shop_account}</span>
+	                            <div class="clear">
+	                            </div>
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name content-details-name">listing：</span>
+	                            <span class="content-mid-later content-details-later">{$shop[0].listing_address|htmlspecialchars}</span>
+	                            <div class="clear">
+	                            </div>
+	                        </div>
+	                        {if $shop[0].plat_form_id eq 1}
+	                        <div>
+	                            <span class="content-mid-name content-details-name">paypal账号：</span>
+	                            <span class="content-mid-later content-details-later">大paypal：{$shop[0].b_paypal_account|htmlspecialchars}</span>
+	                            <span class="content-mid-later content-details-later">小paypal：{$shop[0].s_paypal_account|htmlspecialchars}</span>
+	                            <div class="clear">
+	                            </div>
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name content-details-name">店铺水印：</span>
+	                            <span class="content-mid-later content-details-later">{$shop[0].shop_account}_watermark.png</span>
+	                            <div class="clear">
+	                            </div>
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name content-details-name">物品所在地：</span>
+	                            <span class="content-mid-later content-details-later">{$shop[0].goods_location|htmlspecialchars}</span>
+	                            <div class="clear">
+	                            </div>
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name content-details-name">运到：</span>
+	                            <span class="content-mid-later content-details-later">{","|implode:($shop[0].ship_country|json_decode:true)}</span>
+	                            <div class="clear">
+	                            </div>
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name content-details-name">不运送国家：</span>
+	                            <span class="content-mid-later content-details-later">{","|implode:($shop[0].no_ship_country|json_decode:true)}</span>
+	                            <div class="clear">
+	                            </div>
+	                            {assign var="shopInfo" value=$shop[0].apply_listing_config|json_decode:true}
+	                        </div>
+	                        {foreach from=$shopInfo item=val}
+		                        <div>
+		                            <span class="content-mid-name content-details-name">user token：</span>
+		                            <span class="content-mid-later content-details-later"><textarea style="width:210px;height:50px;margin:10px 0;">{$val.userToken|htmlspecialchars}</textarea></span>
+		                            <div class="clear">
+		                        </div>
+		                        </div>
+		                        <div>
+		                            <span class="content-mid-name content-details-name">site id：</span>
+		                            <span class="content-mid-later content-details-later">{$val.siteID|htmlspecialchars}</span>
+		                            <div class="clear">
+		                            </div>
+		                        </div>
+		                        <div>
+		                            <span class="content-mid-name content-details-name">app id：</span>
+		                            <span class="content-mid-later content-details-later">{$val.appID|htmlspecialchars}</span>
+		                            <div class="clear">
+		                            </div>
+		                        </div>
+		                        <div>
+		                            <span class="content-mid-name content-details-name">dev id：</span>
+		                            <span class="content-mid-later content-details-later">{$val.devID|htmlspecialchars}</span>
+		                            <div class="clear">
+		                            </div>
+		                        </div>
+		                        <div>
+		                            <span class="content-mid-name content-details-name">cert id：</span>
+		                            <span class="content-mid-later content-details-later">{$val.certID|htmlspecialchars}</span>
+		                            <div class="clear">
+		                            </div>
+		                        </div>
+		                        <div>
+		                            <span class="content-mid-name content-details-name">server url：</span>
+		                            <span class="content-mid-later content-details-later">{$val.serverUrl|htmlspecialchars}</span>
+		                            <div class="clear">
+		                            </div>
+		                        </div>
+	                        {/foreach}
+	                      {/if}
+	                    </div>
+	                    <img style="float:right;" src="../../images/details_bt_bg.gif" />
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            {include file="footer.html"}
+        </div>
+    </div>
+</body>
+</html>

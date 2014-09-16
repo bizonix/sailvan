@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>店铺列表</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<link href="../css/page.css" rel="stylesheet" type="text/css" />
+<link href="../css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+<script src="../js/shopList.js"></script>
+</head>
+
+<body class="home-body-color Arial-font">
+	<div class="container">
+    	<div class="content">
+        	{include file='backstagesHead.html'}
+            <div class="content-main">
+                <div class="content-top-appli">
+                    <img src="../images/appli_banner.gif">
+                </div>
+                <div class="content-mid">
+                    {include file='backstagesAuditHead.html'}
+                    <div class="content-mid-right content-mid-unhover content-mid-total">
+                        <div class="content-mid-title content-mid-totalbg">
+                           	 店铺列表
+                            <span class="content-title-ebay">
+                                ebay({$ebayCount}):
+                                {foreach $ebay as $k=>$v}
+                                    {$k}({$v}) 
+                                {/foreach}
+                            </span>
+                            <span class="content-title-smt">
+                                {foreach $platNum as $k=>$v}
+                                    {$k}({$v})
+                                {/foreach}
+                            </span>
+                        </div>
+                        {nocache}
+                        {foreach $shops as $shop}
+                        <div>
+                            <span class="col1">店铺名：</span>
+                            <span class="col2">{$platforms[$shop['plat_form_id']]}{if $shop['plat_form_id']==1||$shop['plat_form_id']==5||$shop['plat_form_id']==6}{$sites[$shop['site_id']]}{/if}</span>
+                            <span class="col3">{$shop['shop_account']}</span>
+                            <span class="col4"><a class="a-color expand" shopid="{$shop['id']}" href="javascript:void(0)">+展开</a></span>
+                            <span class="col5">
+                                {if $shop['status'] == 2}
+                                <label><input type="radio" class="changeStatus" status="3" shopName="{$shop['shop_account']}" shopid="{$shop['id']}" />通过</label>
+                                <label><input type="radio" class="changeStatus" status="4" shopName="{$shop['shop_account']}" shopid="{$shop['id']}" />不通过</label>
+                                {else}
+                                <label>{$shop['statusCode']}</label>
+                                {/if}
+                            </span>
+                        </div>
+                        <div style="display:none" id="detail{$shop['id']}">
+                            {if $shop['plat_form_id'] == 1}
+	                        <div>
+	                            <span class="content-mid-name">大paypal账号：</span>
+	                            <span><input class="text-width-long" type="text" readonly value="{$shop['b_paypal_account']}" /></span>
+	                        </div>
+                            <div>
+                                <span class="content-mid-name">小paypal账号：</span>
+                                <span><input class="text-width-long" type="text" readonly value="{$shop['s_paypal_account']}" /></span>
+                            </div>
+	                        <div>
+	                            <span class="content-mid-name">listing：</span>
+	                            <span><input class="text-width-long" type="text" readonly value="{$shop['listing_address']}" /></span>
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name">店铺水印：</span>
+	                            <span class="content-mid-righttab">
+	                                  <img src="{$shop['shop_watermark']}" />
+	                            </span>
+                                <div style="clear:both;"></div>
+	                        </div>
+                            <div>
+                                <span class="content-mid-name content-mid-left">运到：</span>
+                                <span class="content-mid-righttab">
+                                    {foreach $shop['countrys'] as $k=>$v}
+                                    <label><input type="checkbox" disabled value="{$v['location']}" {if in_array($v['location'],$shop['ship_country'])}checked{/if}/>{$v['desciption']}</label>
+                                    {/foreach}
+                                </span>
+                                <div style="clear:both;">
+                                </div>
+                            </div>
+                            <div>
+                                <span class="content-mid-name content-mid-left">不运送国家：</span>
+                                <span class="content-mid-righttab">
+                                    {$shop['no_ship_country']}
+                                </span>
+                                <div style="clear:both;">
+                                </div>
+                            </div>
+	                        <div>
+                                <span class="content-mid-name">物品所在国家：</span>
+                                <input name="goodsLocationCity1" readonly class="text-width-short" type="text" value="{$shop['goods_location'][0]}" />
+                                <span class="content-mid-name">物品所在地：</span>
+                                <input name="goodsLocationCity1" readonly class="text-width-short" type="text" value="{$shop['goods_location'][1]}" />
+                            </div>
+	                        <div>
+	                            <span class="content-mid-name">userToken：</span>
+	                            <span class="content-mid-righttab"><textarea rows="4" cols="60" readonly>{$shop['apply_listing_config']['userToken']}</textarea></span>
+	                            <div style="clear:both;">
+	                            </div>
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name">siteID：</span>
+	                            <input class="text-width-long" type="text" readonly value="{$shop['apply_listing_config']['siteID']}" />
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name">devID：</span>
+	                            <input class="text-width-long" type="text" readonly value="{$shop['apply_listing_config']['devID']}"  />
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name">appID：</span>
+	                            <input class="text-width-long" type="text" readonly value="{$shop['apply_listing_config']['appID']}"  />
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name">certID：</span>
+	                            <input class="text-width-long" type="text" readonly value="{$shop['apply_listing_config']['certID']}"  />
+	                        </div>
+	                        <div>
+	                            <span class="content-mid-name">server Url：</span>
+	                            <input class="text-width-long" type="text" readonly value="{$shop['apply_listing_config']['serverUrl']}"  />
+	                        </div>
+	                        {else}
+                            <div>
+                                <span class="content-mid-name">listing：</span>
+                                <span><input class="text-width-long" type="text" readonly value="{$shop['listing_address']}" /></span>
+                            </div>
+	                        {/if}
+                        </div>
+                        {/foreach}
+                        {/nocache}
+                        
+                        <div style="width:100%;text-align:center;padding-left:0;" class="pagination">{$showPage}</div>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            {include file='footer.html'}
+        </div>
+    </div>
+    
+    <div id="dialog1">
+            <input type="hidden" id="shopid"  value="" />
+            <b>不通过原因:</b><textarea id="reason"></textarea> 
+    </div>
+</body>
+</html>

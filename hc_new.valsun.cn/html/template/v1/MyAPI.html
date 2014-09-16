@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的API</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<link href="../js/asyncbox/skins/ZCMS/asyncbox.css" type="text/css" rel="stylesheet" />
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/asyncbox/AsyncBox.v1.4.5.js"></script>
+<script src="../js/jquery-ui.js" type="text/javascript"></script>
+<script src="../js/base.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+<script src="../js/applyApi.js"></script>
+</head>
+
+<body class="home-body-color Arial-font">
+    <div class="container">
+        <div class="content">
+            {include file='header.html'}
+            <div class="content-main">
+                {include file='distributionSecondHeader.html'}
+                <div class="content-mid">
+                    {include file='leftNavigate.html'}
+                    <div class="content-mid-right content-mid-table content-mid-unhover">
+                        <div class="content-mid-title">
+                           	 我的API
+                        </div>
+                        <table width="100%" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <td width="15%">申请日期</td>
+                                <td width="14%">API名称</td>
+                                <td width="14%">调用次数</td>
+                                <td width="29%">回调URL</td>
+                                <td width="19%">状态</td>
+                                <td width="9%">操作</td>
+                            </thead>
+                            <tfoot>
+                            {if $developerCallApi}
+                        {foreach from=$developerCallApi item=item}
+                            <tr class="developerCallApi">
+                                <td class="middle">{$item.application_date|date_format:'%Y-%m-%d'}</td>
+                                <td class="left">{$item.api_name}</td>
+                                <td class="left">{$item.api_call_times}</td>
+                                <td class="left">{$item.callback_url|htmlspecialchars}</td>
+                                <td class="left">{$account_status[$item.status]}</td>
+                                <td class="middle">
+                                {if $item.status neq 2} {*通过的则不能编辑*}
+                                    <a class="a-color" onclick="updateDeveloperCallApi({$item.id},'{$item.api_name}','{$item.callback_url}')" href="javascript:void(0)">编辑</a>                                
+                                {/if}
+                                </td>
+                            </tr>
+                        {/foreach}
+                    	{else}
+                   			<tr>
+                                <td class="content-myapi-tfoot" colspan="6" align="center">
+                                    <p>还没有申请记录</p>
+                                    <a class="a-color" href="../index.php?mod=api&act=applyApi">去申请</a>
+                                </td>
+                            </tr>
+                    	{/if}
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            {include file="footer.html"}
+        </div>
+    </div>
+    <div id="updateDeveloperCallApi" title="修改单个api的申请" style="display:none; text-align:center;">
+	    <table align="center" height="80">
+	        <tr>
+	            <td align="right">API：</td>
+	            <td align="left">            	
+	           	    <input name="api" id="api" type="text" value="" readonly  size='50'/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td align="right">回调URL：</td>
+	            <td>
+	            	<input name="url" id="url" type="text" value="" size='50'/>
+	            </td>
+	        </tr>
+	    </table>                
+	</div>
+</body>
+</html>

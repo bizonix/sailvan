@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>高级信息-个人</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+<script src="../../js/distributorBasicInformation.js"></script>
+</head>
+
+<body class="home-body-color Arial-font">
+	<div class="container">
+    	<div class="content">
+        	{include file='backstagesHead.html'}
+            <div class="content-main">
+                <div class="content-top-appli">
+                    <img src="../images/appli_banner.gif">
+                </div>
+                <div class="content-mid">
+                <form id="contentForm">
+                    {include file='backstagesAuditHead.html'}
+                    <div class="content-mid-right content-mid-unhover content-mid-total">
+                        <div class="content-mid-title content-mid-totalbg"> 高级信息</div>
+                        <div>
+                            <span class="content-mid-name">开户银行：</span>
+                            <select class="select-width" name="bank" selectedBank="{$bank|htmlspecialchars}">
+                            
+                            北京银行、上海银行、宁波银行、华夏银行、光大银行、广发银行、江苏银行、北京农商银行、泉州银行、厦门银行、其他
+                                <option value='中国银行'>中国银行</option>
+                                <option value='工商银行'>工商银行</option>
+                                <option value='农业银行'>农业银行</option>
+                                <option value='交通银行'>交通银行</option>
+                                <option value='建设银行'>建设银行</option>
+                                <option value='中国邮政储蓄银行'>中国邮政储蓄银行</option>
+                                <option value='中信银行'>中信银行</option>
+                                <option value='招商银行'>招商银行</option>
+                                <option value='平安银行'>平安银行</option>
+                                <option value='民生银行'>民生银行</option>
+                                <option value='兴业银行'>兴业银行</option>
+                                <option value='浦发银行'>浦发银行</option>
+                                <option value='北京银行'>北京银行</option>
+                                <option value='上海银行'>上海银行</option>
+                                <option value='宁波银行'>宁波银行</option>
+                                <option value='华夏银行'>华夏银行</option>
+                                <option value='光大银行'>光大银行</option>
+                                <option value='广发银行'>广发银行</option>
+                                <option value='江苏银行'>江苏银行</option>
+                                <option value='北京农商银行'>北京农商银行</option>
+                                <option value='泉州银行'>泉州银行</option>
+                                <option value='厦门银行'>厦门银行</option>
+                                <option value='其他'>其他</option>
+                            </select>
+                            <input placeholder="请填写具体开户行，如中国银行深圳宝龙支行" class="text-width-mid" type="text" name='bankName' value="{$bankName|htmlspecialchars}" maxlength='30'/>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">开户人：</span>
+                            <input placeholder="请填写开户人姓名" class="text-width-short" type="text" name='bankUser' value="{$bankUser|htmlspecialchars}" maxlength='25'/>
+                            <input placeholder="填写银行卡账号，方便后期结算支付" class="text-width-mid" type="text" name='bankCardNo' value="{$bankCardNo|htmlspecialchars}" maxlength='25'/>
+                        </div>
+                       <div>
+                            <span class="content-mid-name">营业额：</span>
+                            <span class="content-mid-rightpos content-mid-righttab">
+                                <input placeholder="上年销售额" class="text-width-four" type="text" name='lastYearSales' value="{$lastYearSales|htmlspecialchars}" maxlength='14' />
+                                <input placeholder="预计今年销售额" class="text-width-four" type="text" name='predictSalesByYear' value="{$predictSalesByYear|htmlspecialchars}" maxlength='14' />
+                                <input placeholder="零售" class="text-width-four" type="text" name='retail' value="{$retail|htmlspecialchars}" maxlength='14' />
+                                <input placeholder="批发" class="text-width-four" type="text" name='wholesale' value="{$wholesale|htmlspecialchars}" maxlength='14'  />
+                            </span>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">分销额：</span>
+                            <span class="content-mid-rightpos content-mid-righttab">
+                                <input placeholder="预计每月分销额" class="text-width-long text-one-margin" type="text" name='predictSalesByEveryMonth' value="{$predictSalesByEveryMonth|htmlspecialchars}" maxlength='20' />
+                            </span>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">从业情况：</span>
+                            <span class="content-mid-rightpos content-mid-righttab">
+                                <input placeholder="开始电商时间" class="text-width-short" type="text" name='startElectricBusinessTime' value="{$startElectricBusinessTime|htmlspecialchars}" maxlength='20'  />
+                                <input placeholder="主营电商平台和对应账号数，如ebay，速卖通34" class="text-width-mid" type="text" name='electricBusinessPlatform' value="{$electricBusinessPlatform|htmlspecialchars}" maxlength='50'  />
+                            </span>
+                        </div>
+                        <div>
+                            <span class="content-mid-name">其他联系人：</span>
+                            <span class="content-mid-rightpos content-mid-righttab">
+                                <input placeholder="请填写其他联系人姓名" class="text-width-short" type="text" name='otherContactPersonName' value="{$otherContactPersonName|htmlspecialchars}" maxlength='25' />
+                                <input placeholder="请填写联系人有效联系方式" class="text-width-mid" type="text" name='otherContactPhone'  value="{$otherContactPhone|htmlspecialchars}" maxlength='20' />
+                            </span>
+                        </div>
+                        <div>
+                            <span class="content-mid-name"></span>
+                            <input type="button" value="保存修改" id='backstagesSaveSenior'>
+                        </div>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </form>
+                </div>
+            </div>
+            <div class="home-main">
+            </div>
+            <div class="login-bt">
+                <div class="login-bt-main">
+                    <div>
+                        <a href="#">关于我们</a><span> | </span>
+                        <a href="#">联系我们</a><span> | </span>
+                        <a href="#">人才招聘</a><span> | </span>
+                        <a href="#">商家入驻</a><span> | </span>
+                        <a href="#">广告服务</a><span> | </span>
+                        <a href="#">友情链接</a><span> | </span>
+                        <a href="#">销售联盟</a><span> | </span>
+                        <a href="#">华成社区</a>
+                    </div>
+                    <p>
+                        Copyright©2014 华城云商 版权所有
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

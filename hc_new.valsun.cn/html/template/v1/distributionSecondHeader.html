@@ -1,0 +1,74 @@
+<div class="content-top">
+    <div class="content-top-padding">
+        <div class="content-top-offwidth">
+            {if $progressInfor["checkInfor"] == 0}
+            	<div class="content-top-banner content-top-sucauth">
+                </div>
+	            <div class="content-top-msg">
+	                <p>恭喜您！已成功认证分销商！</p>
+	                <a href="../index.php?mod=myEmpower&act=index">去申请授权</a>
+	            </div>
+	        {else}
+		        <div class="content-top-banner">
+	                {$progressInfor["progressInfor"]}
+	            </div>
+	            <div class="content-top-msg">
+                <p>注册分销商，即可免费申请授权</p>
+                {if $progressInfor["basicInforProgress"] != "100%" || $progressInfor["shopInforProgress"] != "100%"}
+                <a href="#">待完善</a>
+                {/if}
+                {if $progressInfor["basicInforProgress"] != "100%"}
+                <a href="../index.php?mod=distributorBasicInformation&act=index">基本信息</a>
+                {/if}
+                {if $progressInfor["shopInforProgress"] != "100%"}
+                <a href="../index.php?mod=distributorBasicInformation&act=addShop">店铺资料</a>
+                {/if}
+            </div>
+            {/if}
+            {if $progressInfor["checkInfor"] == 6}
+            <div id="checkButton" class="content-top-bt">
+                <a href="#">申请认证分销商</a>
+            </div>
+            <!-- 
+            <div class="content-top-bt">
+            	{assign var="conf" value='ACCOUNT_STATUS'|C}
+                <a href="#">{$conf[$progressInfor["checkInfor"]]}</a>
+            </div>
+             -->
+            {/if}
+            <div style="clear:both;">
+            </div>
+        </div>
+        <div class="content-top-ser">
+            <p>我的服务：</p>
+            <div class="content-top-icon">
+            	<a class="api-icon{if 1|in_array:$progressInfor['serviceInfor']}{else}-gray{/if}" href="../index.php?mod=myEmpower&act=index">API</a>
+                <a class="product-icon{if 2|in_array:$progressInfor['serviceInfor']}{else}-gray{/if}" href="../index.php?mod=myEmpower&act=index">产品数据包</a>
+                <a class="picture-icon{if 3|in_array:$progressInfor['serviceInfor']}{else}-gray{/if}" href="../index.php?mod=myEmpower&act=index">图片系统</a>
+                <a class="pa-icon{if 4|in_array:$progressInfor['serviceInfor']}{else}-gray{/if}" href="../index.php?mod=myEmpower&act=index">ebay刊登系统</a>
+            </div>
+        </div>
+        <div style="clear:both;">
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(function(){
+    	$("#checkButton").on("click",function(){
+    		$.ajax({ 
+        		type  : "POST",
+        		async : false,
+        		url	  : '../index.php?mod=public&act=checkDistribution',
+        		dataType : "json",
+        		success : function(data){
+        			if(data.data){
+        				alert("认证成功！");
+        				location.reload();
+        			}else{
+        				alert(data.errMsg);
+        			}
+        		}
+        	});
+    	});
+    });
+    </script>
+</div>

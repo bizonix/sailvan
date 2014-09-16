@@ -1,0 +1,40 @@
+{nocache}
+<div class="header">
+    <div class="top-bar">
+        <div class="header-nav">
+            <ul>
+                <li class="tab {if $mod eq 'index'}selected{/if}">
+                    <a href="../index.php?mod=index&act=index">首页</a>
+                </li>
+                <li class="tab">
+                    <a target="_blank" href="http://developer.valsun.cn/index.php?mod=developerDoc&act=index">开发文档</a>
+                </li>
+                <li class="tab">
+                    <a href="#">官方论坛</a>
+                </li>
+                {if $loginStatus eq 'in' }
+                <li class="tab selected">
+                    <a href="../index.php?mod=distributorBasicInformation&act=index">个人中心</a>
+                </li>
+                <li class="tab">
+                    <a href="../index.php?mod=login&act=logout">退出</a>
+                </li>
+                {else}
+                <li class="tab {if  $mod eq 'login'}selected{/if}">
+                    <a href="../index.php?mod=login&act=login">登录</a>
+                </li>
+                <li class="tab {if  $mod eq 'register'}selected{/if}">
+                    <a href="../index.php?mod=register&act=register">注册</a>
+                </li>
+                {/if}
+                
+            </ul>
+            <div class="barTop"></div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="logo">
+            <img src="../../images/logo.gif" />
+        </div>
+    </div>
+</div>
+{/nocache}

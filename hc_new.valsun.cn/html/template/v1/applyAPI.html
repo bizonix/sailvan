@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>申请API</title>
+<link href="../js/form/formcss/Validform.css" rel="stylesheet" type="text/css" />
+<link href="../css/valsun.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/form/Validform_v1.0.js"></script>
+<script src="../js/applyApi.js"></script>
+</head>
+
+<body class="home-body-color Arial-font">
+    <div class="container">
+        <div class="content">
+            {include file='header.html'}
+            <div class="content-main">
+                {include file='distributionSecondHeader.html'}
+                <div class="content-mid">
+                    {include file='leftNavigate.html'}
+                    <div class="content-mid-right content-mid-table content-mid-unhover">
+                        <div class="content-mid-title">
+                            	申请API
+                        </div>
+                        <form id="developerCallApi">
+	                        <table width="100%" cellpadding="0" cellspacing="0">
+	                            <thead>
+	                                <td width="15%">
+	                                    API名称
+	                                </td>
+	                                <td width="14%">
+	                                    API描述
+	                                </td>
+	                                <td width="14%">
+	                                   	 回调URL
+	                                </td>
+	                            </thead>
+	                            <tbody>
+	                            {foreach from=$developerCallApi item=val}
+	                                <tr>
+	                                    <td>
+	                                        {$val.api_name}
+	                                    </td>
+	                                    <td>
+	                                        {$val.api_desc}
+	                                    </td>
+	                                    <td>
+	                                        <input type="text" title="{$val.callback_url}" name="{$val.id}" value="{$val.callback_url}"/>
+	                                    </td>
+	                                </tr>
+	                            {/foreach}
+	                            </tbody>
+	                            <tfoot>
+	                                <tr>
+	                                    <td colspan="3" style="padding-left:494px;">
+	                                        <input class="addshops-bt-save" type="button" id="updateCallApi" value="提交申请" />
+	                                    </td>
+	                                </tr>
+	                            </tfoot>
+	                        </table>
+                        </form>
+                    </div>
+                    <div style="clear:both;">
+                    </div>
+                </div>
+            </div>
+            {include file="footer.html"}
+            {include file="myEmpowerBox1.html"}
+        </div>
+    </div>
+</body>
+</html>
